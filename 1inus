@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The One in Us — Divine Touch</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #39ff14;
+      --black: #000000;
+      --white: #f4f4f4;
+      --grey: #777777;
+      --dark-grey: #1a1a1a;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      background: var(--black);
+    }
+
+    body {
+      color: var(--white);
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    main {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 80px 0 100px;
+    }
+
+    .header {
+      margin-bottom: 70px;
+    }
+
+    h1 {
+      color: var(--green);
+      font-size: clamp(28px, 5vw, 56px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--green);
+      font-size: clamp(15px, 2vw, 20px);
+      line-height: 1.5;
+    }
+
+    .ledger-header,
+    .piece {
+      display: grid;
+
+      grid-template-columns:
+        55px
+        minmax(180px, 1.5fr)
+        minmax(110px, 0.7fr)
+        minmax(180px, 1fr);
+
+      column-gap: 20px;
+      align-items: center;
+    }
+
+    .ledger-header {
+      padding: 0 12px 12px;
+
+      border-bottom: 1px solid var(--green);
+
+      color: var(--green);
+
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .piece {
+      min-height: 64px;
+      padding: 12px;
+
+      border-bottom: 1px solid var(--dark-grey);
+
+      color: var(--white);
+      text-decoration: none;
+
+      transition:
+        color 120ms ease,
+        background 120ms ease;
+    }
+
+    .piece.available {
+      cursor: pointer;
+    }
+
+    .piece.available:hover {
+      color: var(--green);
+      background: #071007;
+    }
+
+    .number {
+      color: var(--grey);
+    }
+
+    .name {
+      font-size: 16px;
+    }
+
+    .price {
+      white-space: nowrap;
+    }
+
+    .collector {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #aaa;
+    }
+
+    .available .collector {
+      color: var(--green);
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 50px;
+
+      color: var(--green);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+
+      main {
+        width: calc(100% - 28px);
+        padding: 50px 0 70px;
+      }
+
+      .header {
+        margin-bottom: 50px;
+      }
+
+      .ledger-header {
+        display: none;
+      }
+
+      .piece {
+        grid-template-columns: 34px 1fr auto;
+
+        grid-template-areas:
+          "number name price"
+          ". collector collector";
+
+        column-gap: 10px;
+        row-gap: 8px;
+
+        min-height: 80px;
+      }
+
+      .number {
+        grid-area: number;
+      }
+
+      .name {
+        grid-area: name;
+      }
+
+      .price {
+        grid-area: price;
+        text-align: right;
+        font-size: 13px;
+      }
+
+      .collector {
+        grid-area: collector;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+
+    <header class="header">
+
+      <h1>THE ONE IN US</h1>
+
+      <p class="subtitle">
+        15 archetypes, one race : human
+      </p>
+
+    </header>
+
+
+    <section id="ledger">
+
+      <div class="ledger-header">
+        <span>#</span>
+        <span>Name</span>
+        <span>Price</span>
+        <span>Collector</span>
+      </div>
+
+    </section>
+
+
+    <a class="back" href="/">
+      ← DIVINE TOUCH
+    </a>
+
+  </main>
+
+
+  <script>
+
+    const pieces = [
+
+      {
+        number: "01",
+        name: "The Original",
+        price: "0.12 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      },
+
+      {
+        number: "02",
+        name: "The Outsider",
+        price: "0.04 ETH",
+        collector: "0xffaf...099e",
+        status: "owned"
+      },
+
+      {
+        number: "03",
+        name: "The Durag",
+        price: "0.04 ETH",
+        collector: "ernestoacsh.eth",
+        status: "owned"
+      },
+
+      {
+        number: "04",
+        name: "The Cop",
+        price: "0.04 ETH",
+        collector: "Wallet hidden",
+        status: "owned"
+      },
+
+      {
+        number: "05",
+        name: "The Fez",
+        price: "0.04 ETH",
+        collector: "metuka.eth",
+        status: "owned"
+      },
+
+      {
+        number: "06",
+        name: "Grassy Knoll",
+        price: "0.19 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      },
+
+      {
+        number: "07",
+        name: "Rasta",
+        price: "0.19 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      },
+
+      {
+        number: "08",
+        name: "GoldMouth",
+        price: "0.19 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      },
+
+      {
+        number: "09",
+        name: "Cuban Link",
+        price: "0.19 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      },
+
+      {
+        number: "10",
+        name: "The Player",
+        price: "0.19 ETH",
+        collector: "0xc604...bb33",
+        status: "owned"
+      },
+
+      {
+        number: "11",
+        name: "The Fugitive",
+        price: "0.41 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      },
+
+      {
+        number: "12",
+        name: "Underwater",
+        price: "0.41 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      },
+
+      {
+        number: "13",
+        name: "The Artist",
+        price: "0.41 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      },
+
+      {
+        number: "14",
+        name: "Galactic",
+        price: "0.55 ETH",
+        collector: "adamweitsman.eth",
+        status: "owned"
+      },
+
+      {
+        number: "15",
+        name: "Divine",
+        price: "0.55 ETH",
+        collector: "",
+        status: "available",
+        purchaseLink: "#"
+      }
+
+    ];
+
+
+    const ledger =
+      document.getElementById("ledger");
+
+
+    pieces.forEach((piece) => {
+
+      const element =
+        document.createElement(
+          piece.status === "available"
+            ? "a"
+            : "div"
+        );
+
+
+      element.className =
+        `piece ${piece.status}`;
+
+
+      if (piece.status === "available") {
+
+        element.href =
+          piece.purchaseLink;
+
+        element.target =
+          "_blank";
+
+        element.rel =
+          "noopener noreferrer";
+
+      }
+
+
+      element.innerHTML = `
+
+        <span class="number">
+          ${piece.number}
+        </span>
+
+        <span class="name">
+          ${piece.name}
+        </span>
+
+        <span class="price">
+          ${piece.price}
+        </span>
+
+        <span class="collector">
+          ${piece.collector}
+        </span>
+
+      `;
+
+
+      ledger.appendChild(element);
+
+    });
+
+  </script>
+
+</body>
+</html>
