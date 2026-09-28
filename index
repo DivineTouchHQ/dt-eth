@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Divine Touch</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #000;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      min-height: 100vh;
+
+      font-family: "Courier New", Courier, monospace;
+
+      overflow-x: hidden;
+    }
+
+    .landing {
+      width: 100%;
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      padding: 32px 20px;
+    }
+
+    .art-link {
+      display: block;
+
+      width: min(76vw, 760px);
+
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .artwork {
+      display: block;
+
+      width: 100%;
+      max-height: 72vh;
+
+      object-fit: contain;
+
+      background: #000;
+
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .tagline {
+      margin-top: 24px;
+
+      color: #39ff14;
+
+      font-size: clamp(14px, 1.6vw, 20px);
+      font-weight: 400;
+
+      letter-spacing: 0.02em;
+
+      text-align: center;
+
+      line-height: 1.4;
+    }
+
+    @media (max-width: 700px) {
+      .landing {
+        padding: 24px 16px;
+      }
+
+      .art-link {
+        width: 92vw;
+      }
+
+      .artwork {
+        max-height: 68vh;
+      }
+
+      .tagline {
+        margin-top: 18px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="landing">
+
+    <a
+      class="art-link"
+      href="/the-one-in-us"
+      aria-label="Enter The One in Us"
+    >
+      <img
+        id="cycling-artwork"
+        class="artwork"
+        src="/images/the-one-in-us/01.webp"
+        alt="The One in Us"
+      />
+    </a>
+
+    <p class="tagline">
+      The Home of Handcrafted Collector Package NFTs
+    </p>
+
+  </main>
+
+
+  <script>
+    const artworks = [
+      "/images/the-one-in-us/01.webp",
+      "/images/the-one-in-us/02.webp",
+      "/images/the-one-in-us/03.webp",
+      "/images/the-one-in-us/04.webp",
+      "/images/the-one-in-us/05.webp",
+      "/images/the-one-in-us/06.webp",
+      "/images/the-one-in-us/07.webp",
+      "/images/the-one-in-us/08.webp",
+      "/images/the-one-in-us/09.webp",
+      "/images/the-one-in-us/10.webp",
+      "/images/the-one-in-us/11.webp",
+      "/images/the-one-in-us/12.webp",
+      "/images/the-one-in-us/13.webp",
+      "/images/the-one-in-us/14.webp",
+      "/images/the-one-in-us/15.webp"
+    ];
+
+    const artworkElement = document.getElementById("cycling-artwork");
+
+    let currentArtwork = 0;
+
+    // Preload all 15 images so the rapid cuts don't flicker.
+    artworks.forEach((src) => {
+      const image = new Image();
+      image.src = src;
+    });
+
+    setInterval(() => {
+      currentArtwork = (currentArtwork + 1) % artworks.length;
+      artworkElement.src = artworks[currentArtwork];
+    }, 300);
+  </script>
+
+</body>
+</html>
