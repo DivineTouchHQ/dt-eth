@@ -16,9 +16,7 @@
     :root {
       --green: #39ff14;
       --black: #000000;
-      --white: #f4f4f4;
-      --grey: #777777;
-      --dark-grey: #1a1a1a;
+      --dim-green: #1f8f12;
     }
 
     html,
@@ -28,7 +26,7 @@
     }
 
     body {
-      color: var(--white);
+      color: var(--green);
       font-family: "Courier New", Courier, monospace;
     }
 
@@ -44,7 +42,7 @@
 
     h1 {
       color: var(--green);
-      font-size: clamp(28px, 5vw, 56px);
+      font-size: clamp(30px, 5vw, 56px);
       font-weight: 400;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
@@ -61,12 +59,14 @@
       display: grid;
 
       grid-template-columns:
+        30px
         55px
         minmax(180px, 1.5fr)
         minmax(110px, 0.7fr)
-        minmax(180px, 1fr);
+        minmax(180px, 1fr)
+        70px;
 
-      column-gap: 20px;
+      column-gap: 12px;
       align-items: center;
     }
 
@@ -76,24 +76,32 @@
       border-bottom: 1px solid var(--green);
 
       color: var(--green);
-
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
 
     .piece {
+      position: relative;
+
       min-height: 64px;
       padding: 12px;
 
-      border-bottom: 1px solid var(--dark-grey);
+      border-bottom: 1px solid #12350c;
 
-      color: var(--white);
+      color: var(--green);
       text-decoration: none;
 
       transition:
-        color 120ms ease,
-        background 120ms ease;
+        transform 120ms ease,
+        text-shadow 120ms ease,
+        border-color 120ms ease;
+    }
+
+    .selector,
+    .enter {
+      opacity: 0;
+      transition: opacity 120ms ease;
     }
 
     .piece.available {
@@ -101,16 +109,32 @@
     }
 
     .piece.available:hover {
-      color: var(--green);
-      background: #071007;
+      transform: translateX(8px);
+
+      border-bottom-color: var(--green);
+
+      text-shadow:
+        0 0 5px var(--green),
+        0 0 12px rgba(57, 255, 20, 0.55);
     }
 
-    .number {
-      color: var(--grey);
+    .piece.available:hover .selector,
+    .piece.available:hover .enter {
+      opacity: 1;
+    }
+
+    .number,
+    .name,
+    .price,
+    .collector,
+    .selector,
+    .enter {
+      color: var(--green);
     }
 
     .name {
       font-size: 16px;
+      text-transform: uppercase;
     }
 
     .price {
@@ -121,11 +145,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      color: #aaa;
     }
 
-    .available .collector {
-      color: var(--green);
+    .enter {
+      text-align: right;
+      font-size: 12px;
     }
 
     .back {
@@ -138,7 +162,9 @@
     }
 
     .back:hover {
-      text-decoration: underline;
+      text-shadow:
+        0 0 5px var(--green),
+        0 0 10px var(--green);
     }
 
     @media (max-width: 700px) {
@@ -157,16 +183,20 @@
       }
 
       .piece {
-        grid-template-columns: 34px 1fr auto;
+        grid-template-columns: 18px 32px 1fr auto;
 
         grid-template-areas:
-          "number name price"
-          ". collector collector";
+          "selector number name price"
+          ". . collector collector";
 
-        column-gap: 10px;
+        column-gap: 8px;
         row-gap: 8px;
 
-        min-height: 80px;
+        min-height: 78px;
+      }
+
+      .selector {
+        grid-area: selector;
       }
 
       .number {
@@ -180,12 +210,20 @@
       .price {
         grid-area: price;
         text-align: right;
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .collector {
         grid-area: collector;
-        font-size: 12px;
+        font-size: 11px;
+      }
+
+      .enter {
+        display: none;
+      }
+
+      .piece.available:hover {
+        transform: translateX(4px);
       }
     }
   </style>
@@ -209,16 +247,18 @@
     <section id="ledger">
 
       <div class="ledger-header">
+        <span></span>
         <span>#</span>
         <span>Name</span>
         <span>Price</span>
         <span>Collector</span>
+        <span></span>
       </div>
 
     </section>
 
 
-    <a class="back" href="/">
+    <a class="back" href="index.html">
       ← DIVINE TOUCH
     </a>
 
@@ -374,26 +414,18 @@
             : "div"
         );
 
-
       element.className =
         `piece ${piece.status}`;
 
-
       if (piece.status === "available") {
-
-        element.href =
-          piece.purchaseLink;
-
-        element.target =
-          "_blank";
-
-        element.rel =
-          "noopener noreferrer";
-
+        element.href = piece.purchaseLink;
       }
 
-
       element.innerHTML = `
+
+        <span class="selector">
+          ${piece.status === "available" ? ">" : ""}
+        </span>
 
         <span class="number">
           ${piece.number}
@@ -411,8 +443,11 @@
           ${piece.collector}
         </span>
 
-      `;
+        <span class="enter">
+          ${piece.status === "available" ? "[ENTER]" : ""}
+        </span>
 
+      `;
 
       ledger.appendChild(element);
 
