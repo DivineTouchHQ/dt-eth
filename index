@@ -24,11 +24,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
       min-height: 100vh;
 
       font-family: "Courier New", Courier, monospace;
-
       overflow-x: hidden;
     }
 
@@ -46,7 +44,6 @@
 
     .art-link {
       display: block;
-
       width: min(76vw, 760px);
 
       text-decoration: none;
@@ -76,9 +73,7 @@
       font-weight: 400;
 
       letter-spacing: 0.02em;
-
       text-align: center;
-
       line-height: 1.4;
     }
 
@@ -109,13 +104,13 @@
 
     <a
       class="art-link"
-      href="/the-one-in-us"
+      href="/1inus"
       aria-label="Enter The One in Us"
     >
       <img
         id="cycling-artwork"
         class="artwork"
-        src="/images/the-one-in-us/01.webp"
+        src="https://raw.githubusercontent.com/DivineTouchHQ/dt-eth/main/the-one-in-us-art/cuban-link.jpg"
         alt="The One in Us"
       />
     </a>
@@ -126,39 +121,46 @@
 
   </main>
 
-
   <script>
+    const base =
+      "https://raw.githubusercontent.com/DivineTouchHQ/dt-eth/main/the-one-in-us-art/";
+
     const artworks = [
-      "/images/the-one-in-us/01.webp",
-      "/images/the-one-in-us/02.webp",
-      "/images/the-one-in-us/03.webp",
-      "/images/the-one-in-us/04.webp",
-      "/images/the-one-in-us/05.webp",
-      "/images/the-one-in-us/06.webp",
-      "/images/the-one-in-us/07.webp",
-      "/images/the-one-in-us/08.webp",
-      "/images/the-one-in-us/09.webp",
-      "/images/the-one-in-us/10.webp",
-      "/images/the-one-in-us/11.webp",
-      "/images/the-one-in-us/12.webp",
-      "/images/the-one-in-us/13.webp",
-      "/images/the-one-in-us/14.webp",
-      "/images/the-one-in-us/15.webp"
+      base + "cuban-link.jpg",
+      base + "divine.jpg",
+      base + "galactic.jpg",
+      base + "goldmouth.jpg",
+      base + "grassy-knoll.jpg",
+      base + "rasta.jpg",
+      base + "the-artist.jpg",
+      base + "the-cop.jpg",
+      base + "the-durag.jpg",
+      base + "the-fez.jpg",
+      base + "the-fugitive.jpg",
+      base + "the-original.jpg",
+      base + "the-outsider.jpg",
+      base + "the-player.jpg",
+      base + "underwater.jpg"
     ];
 
-    const artworkElement = document.getElementById("cycling-artwork");
+    const artworkElement =
+      document.getElementById("cycling-artwork");
 
     let currentArtwork = 0;
 
-    // Preload all 15 images so the rapid cuts don't flicker.
+    // Preload all 15 artworks
     artworks.forEach((src) => {
       const image = new Image();
       image.src = src;
     });
 
+    // Hard-cut to the next artwork every 0.3 seconds
     setInterval(() => {
-      currentArtwork = (currentArtwork + 1) % artworks.length;
-      artworkElement.src = artworks[currentArtwork];
+      currentArtwork =
+        (currentArtwork + 1) % artworks.length;
+
+      artworkElement.src =
+        artworks[currentArtwork];
     }, 300);
   </script>
 
