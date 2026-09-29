@@ -16,7 +16,6 @@
     :root {
       --green: #39ff14;
       --black: #000000;
-      --dim-green: #1f8f12;
     }
 
     html,
@@ -57,7 +56,6 @@
     .ledger-header,
     .piece {
       display: grid;
-
       grid-template-columns:
         30px
         55px
@@ -73,7 +71,6 @@
     .ledger-header {
       padding: 0 12px 12px;
       border-bottom: 1px solid var(--green);
-
       color: var(--green);
       font-size: 12px;
       text-transform: uppercase;
@@ -82,10 +79,8 @@
 
     .piece {
       position: relative;
-
       min-height: 64px;
       padding: 12px;
-
       border-bottom: 1px solid #12350c;
 
       color: var(--green);
@@ -106,7 +101,6 @@
 
     .piece:hover {
       transform: translateX(8px);
-
       border-bottom-color: var(--green);
 
       text-shadow:
@@ -151,7 +145,6 @@
     .back {
       display: inline-block;
       margin-top: 50px;
-
       color: var(--green);
       text-decoration: none;
       font-size: 14px;
@@ -164,7 +157,6 @@
     }
 
     @media (max-width: 700px) {
-
       main {
         width: calc(100% - 28px);
         padding: 50px 0 70px;
@@ -187,7 +179,6 @@
 
         column-gap: 8px;
         row-gap: 8px;
-
         min-height: 78px;
       }
 
@@ -230,15 +221,12 @@
   <main>
 
     <header class="header">
-
       <h1>THE ONE IN US</h1>
 
       <p class="subtitle">
         15 archetypes, one race : human
       </p>
-
     </header>
-
 
     <section id="ledger">
 
@@ -253,16 +241,13 @@
 
     </section>
 
-
     <a class="back" href="index.html">
       ← DIVINE TOUCH
     </a>
 
   </main>
 
-
   <script>
-
     const pieces = [
 
       {
@@ -271,7 +256,7 @@
         price: "0.12 ETH",
         collector: "",
         status: "available",
-        artifactLink: "the-original/"
+        artifactLink: "the-original.html"
       },
 
       {
@@ -280,7 +265,7 @@
         price: "0.04 ETH",
         collector: "0xffaf...099e",
         status: "owned",
-        artifactLink: "the-outsider/"
+        artifactLink: "the-outsider.html"
       },
 
       {
@@ -289,7 +274,7 @@
         price: "0.04 ETH",
         collector: "ernestoacsh.eth",
         status: "owned",
-        artifactLink: "the-durag/"
+        artifactLink: "the-durag.html"
       },
 
       {
@@ -298,7 +283,7 @@
         price: "0.04 ETH",
         collector: "Wallet hidden",
         status: "owned",
-        artifactLink: "the-cop/"
+        artifactLink: "the-cop.html"
       },
 
       {
@@ -307,7 +292,7 @@
         price: "0.04 ETH",
         collector: "metuka.eth",
         status: "owned",
-        artifactLink: "the-fez/"
+        artifactLink: "the-fez.html"
       },
 
       {
@@ -316,7 +301,7 @@
         price: "0.19 ETH",
         collector: "",
         status: "available",
-        artifactLink: "grassy-knoll/"
+        artifactLink: "grassy-knoll.html"
       },
 
       {
@@ -325,7 +310,7 @@
         price: "0.19 ETH",
         collector: "",
         status: "available",
-        artifactLink: "rasta/"
+        artifactLink: "rasta.html"
       },
 
       {
@@ -334,7 +319,7 @@
         price: "0.19 ETH",
         collector: "",
         status: "available",
-        artifactLink: "goldmouth/"
+        artifactLink: "goldmouth.html"
       },
 
       {
@@ -343,7 +328,7 @@
         price: "0.19 ETH",
         collector: "",
         status: "available",
-        artifactLink: "cuban-link/"
+        artifactLink: "cuban-link.html"
       },
 
       {
@@ -352,7 +337,7 @@
         price: "0.19 ETH",
         collector: "0xc604...bb33",
         status: "owned",
-        artifactLink: "the-player/"
+        artifactLink: "the-player.html"
       },
 
       {
@@ -361,7 +346,7 @@
         price: "0.41 ETH",
         collector: "",
         status: "available",
-        artifactLink: "fugitive/"
+        artifactLink: "fugitive.html"
       },
 
       {
@@ -370,7 +355,7 @@
         price: "0.41 ETH",
         collector: "",
         status: "available",
-        artifactLink: "underwater/"
+        artifactLink: "underwater.html"
       },
 
       {
@@ -379,7 +364,7 @@
         price: "0.41 ETH",
         collector: "",
         status: "available",
-        artifactLink: "the-artist/"
+        artifactLink: "the-artist.html"
       },
 
       {
@@ -388,7 +373,7 @@
         price: "0.55 ETH",
         collector: "adamweitsman.eth",
         status: "owned",
-        artifactLink: "galactic/"
+        artifactLink: "galactic.html"
       },
 
       {
@@ -397,15 +382,13 @@
         price: "0.55 ETH",
         collector: "",
         status: "available",
-        artifactLink: "divine/"
+        artifactLink: "divine.html"
       }
 
     ];
 
-
     const ledger =
       document.getElementById("ledger");
-
 
     pieces.forEach((piece) => {
 
@@ -419,7 +402,6 @@
         piece.artifactLink;
 
       element.innerHTML = `
-
         <span class="selector">
           >
         </span>
@@ -443,16 +425,12 @@
         <span class="enter">
           [ENTER]
         </span>
-
       `;
 
       ledger.appendChild(element);
 
     });
-
   </script>
 
-</body>
-</html>
 </body>
 </html>
