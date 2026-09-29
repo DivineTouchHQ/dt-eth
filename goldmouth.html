@@ -3,37 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>GoldMouth — Divine Touch</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-
-    body {
-      font-family: "Courier New", Courier, monospace;
-      color: #39ff14;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+    body { font-family: "Courier New", Courier, monospace; color: #39ff14; }
 
     .artifact-page {
       width: 100vw;
       height: 100vh;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       gap: clamp(35px, 7vw, 110px);
       padding: 40px;
     }
@@ -41,14 +23,12 @@
     .artwork {
       width: min(34vw, 420px);
       max-height: 70vh;
-
       object-fit: contain;
       display: block;
     }
 
     .info {
       width: min(38vw, 480px);
-
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -67,38 +47,29 @@
       margin-bottom: 24px;
     }
 
-    .price {
-      font-size: clamp(18px, 2vw, 28px);
+    .price { font-size: clamp(18px, 2vw, 28px); }
+
+    .back {
+      position: fixed;
+      left: 24px;
+      bottom: 20px;
+      color: #39ff14;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .back:hover {
+      text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
     }
 
     @media (max-width: 700px) {
-      .artifact-page {
-        gap: 22px;
-        padding: 20px;
-      }
-
-      .artwork {
-        width: 44vw;
-        max-height: 55vh;
-      }
-
-      .info {
-        width: 42vw;
-      }
-
-      .name {
-        font-size: 18px;
-        margin-bottom: 14px;
-      }
-
-      .description {
-        font-size: 12px;
-        margin-bottom: 16px;
-      }
-
-      .price {
-        font-size: 15px;
-      }
+      .artifact-page { gap: 22px; padding: 20px; }
+      .artwork { width: 44vw; max-height: 55vh; }
+      .info { width: 42vw; }
+      .name { font-size: 18px; margin-bottom: 14px; }
+      .description { font-size: 12px; margin-bottom: 16px; }
+      .price { font-size: 15px; }
+      .back { left: 16px; bottom: 14px; font-size: 11px; }
     }
   </style>
 </head>
@@ -114,22 +85,14 @@
     />
 
     <section class="info">
-
-      <h1 class="name">
-        GoldMouth
-      </h1>
-
-      <p class="description">
-        The one in us that stays dripped out.
-      </p>
-
-      <p class="price">
-        0.19 ETH
-      </p>
-
+      <h1 class="name">GoldMouth</h1>
+      <p class="description">The one in us that stays dripped out.</p>
+      <p class="price">0.19 ETH</p>
     </section>
 
   </main>
+
+  <a class="back" href="1inus.html">← THE ONE IN US</a>
 
 </body>
 </html>
