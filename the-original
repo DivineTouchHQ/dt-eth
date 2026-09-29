@@ -54,11 +54,6 @@
       justify-content: center;
     }
 
-    .number {
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
     .name {
       font-size: clamp(24px, 3vw, 44px);
       font-weight: 400;
@@ -91,11 +86,6 @@
         width: 42vw;
       }
 
-      .number {
-        font-size: 10px;
-        margin-bottom: 8px;
-      }
-
       .name {
         font-size: 18px;
         margin-bottom: 14px;
@@ -124,10 +114,6 @@
     />
 
     <section class="info">
-
-      <p class="number">
-        01/15
-      </p>
 
       <h1 class="name">
         The Original
