@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Divine Touch</title>
+  <title>The One in Us — Divine Touch</title>
 
   <style>
     * {
@@ -13,86 +13,212 @@
       padding: 0;
     }
 
+    :root {
+      --green: #39ff14;
+      --black: #000000;
+    }
+
     html,
     body {
-      width: 100%;
       min-height: 100%;
-      background: #000;
+      background: var(--black);
     }
 
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-
+      color: var(--green);
       font-family: "Courier New", Courier, monospace;
-      overflow-x: hidden;
     }
 
-    .landing {
-      width: 100%;
-      min-height: 100vh;
+    main {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 80px 0 100px;
+    }
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .header {
+      margin-bottom: 70px;
+    }
+
+    h1 {
+      color: var(--green);
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--green);
+      font-size: clamp(15px, 2vw, 20px);
+      line-height: 1.5;
+    }
+
+    .ledger-header,
+    .piece {
+      display: grid;
+
+      grid-template-columns:
+        30px
+        55px
+        minmax(180px, 1.5fr)
+        minmax(110px, 0.7fr)
+        minmax(180px, 1fr)
+        70px;
+
+      column-gap: 12px;
       align-items: center;
-
-      padding: 32px 20px;
     }
 
-    .art-link {
-      display: block;
-      width: min(76vw, 760px);
+    .ledger-header {
+      padding: 0 12px 12px;
+      border-bottom: 1px solid var(--green);
 
+      color: var(--green);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .piece {
+      position: relative;
+
+      min-height: 64px;
+      padding: 12px;
+
+      border-bottom: 1px solid #12350c;
+
+      color: var(--green);
       text-decoration: none;
       cursor: pointer;
+
+      transition:
+        transform 120ms ease,
+        text-shadow 120ms ease,
+        border-color 120ms ease;
     }
 
-    .artwork {
-      display: block;
-
-      width: 100%;
-      max-height: 72vh;
-
-      object-fit: contain;
-
-      background: #000;
-
-      user-select: none;
-      -webkit-user-drag: none;
+    .selector,
+    .enter {
+      opacity: 0;
+      transition: opacity 120ms ease;
     }
 
-    .tagline {
-      margin-top: 24px;
+    .piece:hover {
+      transform: translateX(8px);
 
-      color: #39ff14;
+      border-bottom-color: var(--green);
 
-      font-size: clamp(14px, 1.6vw, 20px);
-      font-weight: 400;
+      text-shadow:
+        0 0 5px var(--green),
+        0 0 12px rgba(57, 255, 20, 0.55);
+    }
 
-      letter-spacing: 0.02em;
-      text-align: center;
-      line-height: 1.4;
+    .piece:hover .selector,
+    .piece:hover .enter {
+      opacity: 1;
+    }
+
+    .number,
+    .name,
+    .price,
+    .collector,
+    .selector,
+    .enter {
+      color: var(--green);
+    }
+
+    .name {
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .price {
+      white-space: nowrap;
+    }
+
+    .collector {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .enter {
+      text-align: right;
+      font-size: 12px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 50px;
+
+      color: var(--green);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      text-shadow:
+        0 0 5px var(--green),
+        0 0 10px var(--green);
     }
 
     @media (max-width: 700px) {
-      .landing {
-        padding: 24px 16px;
+
+      main {
+        width: calc(100% - 28px);
+        padding: 50px 0 70px;
       }
 
-      .art-link {
-        width: 92vw;
+      .header {
+        margin-bottom: 50px;
       }
 
-      .artwork {
-        max-height: 68vh;
+      .ledger-header {
+        display: none;
       }
 
-      .tagline {
-        margin-top: 18px;
-        font-size: 14px;
+      .piece {
+        grid-template-columns: 18px 32px 1fr auto;
+
+        grid-template-areas:
+          "selector number name price"
+          ". . collector collector";
+
+        column-gap: 8px;
+        row-gap: 8px;
+
+        min-height: 78px;
+      }
+
+      .selector {
+        grid-area: selector;
+      }
+
+      .number {
+        grid-area: number;
+      }
+
+      .name {
+        grid-area: name;
+      }
+
+      .price {
+        grid-area: price;
+        text-align: right;
+        font-size: 12px;
+      }
+
+      .collector {
+        grid-area: collector;
+        font-size: 11px;
+      }
+
+      .enter {
+        display: none;
+      }
+
+      .piece:hover {
+        transform: translateX(4px);
       }
     }
   </style>
@@ -100,68 +226,229 @@
 
 <body>
 
-  <main class="landing">
+  <main>
 
-    <a
-      class="art-link"
-      href="1inus.html"
-      aria-label="Enter The One in Us"
-    >
-      <img
-        id="cycling-artwork"
-        class="artwork"
-        src="https://raw.githubusercontent.com/DivineTouchHQ/dt-eth/main/the-one-in-us-art/cuban-link.jpg"
-        alt="The One in Us"
-      />
+    <header class="header">
+
+      <h1>THE ONE IN US</h1>
+
+      <p class="subtitle">
+        15 archetypes, one race : human
+      </p>
+
+    </header>
+
+
+    <section id="ledger">
+
+      <div class="ledger-header">
+        <span></span>
+        <span>#</span>
+        <span>Name</span>
+        <span>Price</span>
+        <span>Collector</span>
+        <span></span>
+      </div>
+
+    </section>
+
+
+    <a class="back" href="index.html">
+      ← DIVINE TOUCH
     </a>
-
-    <p class="tagline">
-      The Home of Handcrafted Collector Package NFTs
-    </p>
 
   </main>
 
-  <script>
-    const base =
-      "https://raw.githubusercontent.com/DivineTouchHQ/dt-eth/main/the-one-in-us-art/";
 
-    const artworks = [
-      base + "cuban-link.jpg",
-      base + "divine.jpg",
-      base + "galactic.jpg",
-      base + "goldmouth.jpg",
-      base + "grassy-knoll.jpg",
-      base + "rasta.jpg",
-      base + "the-artist.jpg",
-      base + "the-cop.jpg",
-      base + "the-durag.jpg",
-      base + "the-fez.jpg",
-      base + "the-fugitive.jpg",
-      base + "the-original.jpg",
-      base + "the-outsider.jpg",
-      base + "the-player.jpg",
-      base + "underwater.jpg"
+  <script>
+
+    const pieces = [
+
+      {
+        number: "01",
+        name: "The Original",
+        price: "0.12 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "the-original.html"
+      },
+
+      {
+        number: "02",
+        name: "The Outsider",
+        price: "0.04 ETH",
+        collector: "0xffaf...099e",
+        status: "owned",
+        artifactLink: "the-outsider.html"
+      },
+
+      {
+        number: "03",
+        name: "The Durag",
+        price: "0.04 ETH",
+        collector: "ernestoacsh.eth",
+        status: "owned",
+        artifactLink: "the-durag.html"
+      },
+
+      {
+        number: "04",
+        name: "The Cop",
+        price: "0.04 ETH",
+        collector: "Wallet hidden",
+        status: "owned",
+        artifactLink: "the-cop.html"
+      },
+
+      {
+        number: "05",
+        name: "The Fez",
+        price: "0.04 ETH",
+        collector: "metuka.eth",
+        status: "owned",
+        artifactLink: "the-fez.html"
+      },
+
+      {
+        number: "06",
+        name: "Grassy Knoll",
+        price: "0.19 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "grassy-knoll.html"
+      },
+
+      {
+        number: "07",
+        name: "Rasta",
+        price: "0.19 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "rasta.html"
+      },
+
+      {
+        number: "08",
+        name: "GoldMouth",
+        price: "0.19 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "goldmouth.html"
+      },
+
+      {
+        number: "09",
+        name: "Cuban Link",
+        price: "0.19 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "cuban-link.html"
+      },
+
+      {
+        number: "10",
+        name: "The Player",
+        price: "0.19 ETH",
+        collector: "0xc604...bb33",
+        status: "owned",
+        artifactLink: "the-player.html"
+      },
+
+      {
+        number: "11",
+        name: "The Fugitive",
+        price: "0.41 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "fugitive.html"
+      },
+
+      {
+        number: "12",
+        name: "Underwater",
+        price: "0.41 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "underwater.html"
+      },
+
+      {
+        number: "13",
+        name: "The Artist",
+        price: "0.41 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "the-artist.html"
+      },
+
+      {
+        number: "14",
+        name: "Galactic",
+        price: "0.55 ETH",
+        collector: "adamweitsman.eth",
+        status: "owned",
+        artifactLink: "galactic.html"
+      },
+
+      {
+        number: "15",
+        name: "Divine",
+        price: "0.55 ETH",
+        collector: "",
+        status: "available",
+        artifactLink: "divine.html"
+      }
+
     ];
 
-    const artworkElement =
-      document.getElementById("cycling-artwork");
 
-    let currentArtwork = 0;
+    const ledger =
+      document.getElementById("ledger");
 
-    // Preload all 15 artworks
-    artworks.forEach((src) => {
-      const image = new Image();
-      image.src = src;
+
+    pieces.forEach((piece) => {
+
+      const element =
+        document.createElement("a");
+
+      element.className =
+        `piece ${piece.status}`;
+
+      element.href =
+        piece.artifactLink;
+
+      element.innerHTML = `
+
+        <span class="selector">
+          >
+        </span>
+
+        <span class="number">
+          ${piece.number}
+        </span>
+
+        <span class="name">
+          ${piece.name}
+        </span>
+
+        <span class="price">
+          ${piece.price}
+        </span>
+
+        <span class="collector">
+          ${piece.collector}
+        </span>
+
+        <span class="enter">
+          [ENTER]
+        </span>
+
+      `;
+
+      ledger.appendChild(element);
+
     });
 
-    // Hard-cut to the next artwork every 0.3 seconds
-    setInterval(() => {
-      currentArtwork =
-        (currentArtwork + 1) % artworks.length;
-
-      artworkElement.src =
-        artworks[currentArtwork];
-    }, 300);
   </script>
 
 </body>
