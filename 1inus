@@ -72,7 +72,6 @@
 
     .ledger-header {
       padding: 0 12px 12px;
-
       border-bottom: 1px solid var(--green);
 
       color: var(--green);
@@ -91,6 +90,7 @@
 
       color: var(--green);
       text-decoration: none;
+      cursor: pointer;
 
       transition:
         transform 120ms ease,
@@ -104,11 +104,7 @@
       transition: opacity 120ms ease;
     }
 
-    .piece.available {
-      cursor: pointer;
-    }
-
-    .piece.available:hover {
+    .piece:hover {
       transform: translateX(8px);
 
       border-bottom-color: var(--green);
@@ -118,8 +114,8 @@
         0 0 12px rgba(57, 255, 20, 0.55);
     }
 
-    .piece.available:hover .selector,
-    .piece.available:hover .enter {
+    .piece:hover .selector,
+    .piece:hover .enter {
       opacity: 1;
     }
 
@@ -222,7 +218,7 @@
         display: none;
       }
 
-      .piece.available:hover {
+      .piece:hover {
         transform: translateX(4px);
       }
     }
@@ -275,7 +271,7 @@
         price: "0.12 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "the-original/"
       },
 
       {
@@ -283,7 +279,8 @@
         name: "The Outsider",
         price: "0.04 ETH",
         collector: "0xffaf...099e",
-        status: "owned"
+        status: "owned",
+        artifactLink: "the-outsider/"
       },
 
       {
@@ -291,7 +288,8 @@
         name: "The Durag",
         price: "0.04 ETH",
         collector: "ernestoacsh.eth",
-        status: "owned"
+        status: "owned",
+        artifactLink: "the-durag/"
       },
 
       {
@@ -299,7 +297,8 @@
         name: "The Cop",
         price: "0.04 ETH",
         collector: "Wallet hidden",
-        status: "owned"
+        status: "owned",
+        artifactLink: "the-cop/"
       },
 
       {
@@ -307,7 +306,8 @@
         name: "The Fez",
         price: "0.04 ETH",
         collector: "metuka.eth",
-        status: "owned"
+        status: "owned",
+        artifactLink: "the-fez/"
       },
 
       {
@@ -316,7 +316,7 @@
         price: "0.19 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "grassy-knoll/"
       },
 
       {
@@ -325,7 +325,7 @@
         price: "0.19 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "rasta/"
       },
 
       {
@@ -334,7 +334,7 @@
         price: "0.19 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "goldmouth/"
       },
 
       {
@@ -343,7 +343,7 @@
         price: "0.19 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "cuban-link/"
       },
 
       {
@@ -351,7 +351,8 @@
         name: "The Player",
         price: "0.19 ETH",
         collector: "0xc604...bb33",
-        status: "owned"
+        status: "owned",
+        artifactLink: "the-player/"
       },
 
       {
@@ -360,7 +361,7 @@
         price: "0.41 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "fugitive/"
       },
 
       {
@@ -369,7 +370,7 @@
         price: "0.41 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "underwater/"
       },
 
       {
@@ -378,7 +379,7 @@
         price: "0.41 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "the-artist/"
       },
 
       {
@@ -386,7 +387,8 @@
         name: "Galactic",
         price: "0.55 ETH",
         collector: "adamweitsman.eth",
-        status: "owned"
+        status: "owned",
+        artifactLink: "galactic/"
       },
 
       {
@@ -395,7 +397,7 @@
         price: "0.55 ETH",
         collector: "",
         status: "available",
-        purchaseLink: "#"
+        artifactLink: "divine/"
       }
 
     ];
@@ -408,23 +410,18 @@
     pieces.forEach((piece) => {
 
       const element =
-        document.createElement(
-          piece.status === "available"
-            ? "a"
-            : "div"
-        );
+        document.createElement("a");
 
       element.className =
         `piece ${piece.status}`;
 
-      if (piece.status === "available") {
-        element.href = piece.purchaseLink;
-      }
+      element.href =
+        piece.artifactLink;
 
       element.innerHTML = `
 
         <span class="selector">
-          ${piece.status === "available" ? ">" : ""}
+          >
         </span>
 
         <span class="number">
@@ -444,7 +441,7 @@
         </span>
 
         <span class="enter">
-          ${piece.status === "available" ? "[ENTER]" : ""}
+          [ENTER]
         </span>
 
       `;
@@ -455,5 +452,7 @@
 
   </script>
 
+</body>
+</html>
 </body>
 </html>
