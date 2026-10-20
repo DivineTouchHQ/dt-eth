@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +32,8 @@
     }
 
     .landing {
+      position: relative;
+
       width: 100%;
       min-height: 100vh;
 
@@ -39,7 +42,25 @@
       justify-content: center;
       align-items: center;
 
-      padding: 32px 20px;
+      padding: 90px 20px 32px;
+    }
+
+    /* DIVINE TOUCH TITLE */
+    .brand {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 100%;
+
+      color: #39ff14;
+
+      font-family: "Courier New", Courier, monospace;
+      font-size: clamp(26px, 3vw, 42px);
+      font-weight: 400;
+
+      letter-spacing: 0.06em;
+      text-align: center;
+      line-height: 1.2;
     }
 
     .art-link {
@@ -79,7 +100,12 @@
 
     @media (max-width: 700px) {
       .landing {
-        padding: 24px 16px;
+        padding: 80px 16px 24px;
+      }
+
+      .brand {
+        top: 24px;
+        font-size: 26px;
       }
 
       .art-link {
@@ -101,6 +127,8 @@
 <body>
 
   <main class="landing">
+
+    <h1 class="brand">DIVINE TOUCH</h1>
 
     <a
       class="art-link"
